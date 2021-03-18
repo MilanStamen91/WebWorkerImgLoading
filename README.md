@@ -1,4 +1,4 @@
-# WebWorkerImgLoading
+# Web Worker Img Loading
 Loading Images with Web Workers
 
 What's the point of this? Doesn't the browsers already decode the images in a separate thread?
