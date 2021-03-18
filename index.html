@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            max-height: 100vh;
+            max-width: 100vw;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+    </style>
+    <title>Loading imgs with service workers multi treading</title>
+
+    <script id="worker" type="text/javascript-worker">
+        self.addEventListener('message', async event => {
+          const imageURL = event.data
+      
+          const response = await fetch(imageURL)
+          const blob = await response.blob()
+      
+          // Send the image data to the UI thread!
+          self.postMessage({
+            imageURL: imageURL,
+            blob: blob,
+          })
+        })
+    </script>
+</head>
+
+<body>
+    <img data-src="https://source.unsplash.com/random?index=1">
+    <img data-src="https://source.unsplash.com/random?index=2">
+    <img data-src="https://source.unsplash.com/random?index=3">
+    <img data-src="https://source.unsplash.com/random?index=4">
+    <img data-src="https://source.unsplash.com/random?index=5">
+    <img data-src="https://source.unsplash.com/random?index=6">
+
+    <script src="./custom.js"> </script>
+</body>
+
+</html>
