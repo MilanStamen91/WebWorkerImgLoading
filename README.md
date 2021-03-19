@@ -16,3 +16,7 @@ Well, this is essentially lazy loading. The difference between this and traditio
 and loads the images in parallel, whereas traditionally you would wait until the UI has loaded, 
 then set the src attribute on the img tags so they use the typical browser loading methods. 
 It's the difference between loading your UI and images at the same time, versus loading your UI first, then your images after.
+
+Worklets
+
+Worklets are a very lightweight, highly specific, worker. They enable us as developers to hook into various parts of the browser’s rendering process - Style, Layout, Paint, & Composite.
